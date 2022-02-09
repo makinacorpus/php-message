@@ -48,7 +48,15 @@ final class RamseyUuidMessageId implements MessageId
      */
     public function toString(): string
     {
-        return (string) $this->value;
+        return $this->value->toString();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString(): string
+    {
+        return $this->value->toString();
     }
 
     /**

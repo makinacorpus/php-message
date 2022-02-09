@@ -52,6 +52,14 @@ final class SymfonyUidMessageId implements MessageId
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
+
+    /**
      * Get internal value.
      */
     public function getValue(): AbstractUid

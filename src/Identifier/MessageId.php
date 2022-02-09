@@ -18,4 +18,9 @@ interface MessageId
      * Compute string value.
      */
     public function toString(): string;
+
+    /**
+     * Compute string value.
+     */
+    public function __toString(): string;
 }

@@ -54,4 +54,12 @@ final class StringMessageId implements MessageId
     {
         return $this->value;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString(): string
+    {
+        return $this->value;
+    }
 }
