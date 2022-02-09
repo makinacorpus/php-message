@@ -19,6 +19,27 @@ trait WithPropertiesTrait
     private ?MessageId $messageId = null;
 
     /**
+     * Override properties.
+     *
+     * @return $this
+     */
+    protected function setProperties(array $properties): void
+    {
+        foreach ($properties as $key => $value) {
+            if (Property::MESSAGE_ID === $key) {
+                $this->messageId = null; // Reset message id if already computed.
+            }
+            if (null === $value || '' === $value) {
+                unset($this->properties[$key]);
+            } else if (\is_scalar($value) || $value instanceof \Stringable) {
+                $this->properties[$key] = (string) $value;
+            } else {
+                throw new \InvalidArgumentException(\sprintf("Property value for key '%s' must be a string or scalar, '%s' given.", $key, \get_debug_type($value)));
+            }
+        }
+    }
+
+    /**
      * Set message identifier.
      *
      * @internal

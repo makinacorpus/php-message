@@ -54,16 +54,7 @@ class Envelope
      */
     public function withProperties(array $properties): Envelope /* @todo static */
     {
-        foreach ($properties as $key => $value) {
-            if (Property::MESSAGE_ID === $key) {
-                $this->messageId = null; // Reset message id if already computed.
-            }
-            if (null === $value || '' === $value) {
-                unset($this->properties[$key]);
-            } else {
-                $this->properties[$key] = (string)$value;
-            }
-        }
+        $this->setProperties($properties);
 
         return $this;
     }
