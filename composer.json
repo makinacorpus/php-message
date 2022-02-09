@@ -1,0 +1,51 @@
+{
+    "name" : "makinacorpus/message",
+    "type": "library",
+    "description": "General purpose message envelope contracts for higher level tools",
+    "homepage": "http://github.com/makinacorpus/php-message",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name" : "Pierre RINEAU",
+            "email" : "pierre.rineau@processus.org"
+        },
+        {
+            "name" : "Régis LEROY",
+            "email" : "regis.leroy@makina-corpus.com",
+            "role": "Developer"
+        },
+        {
+            "name" : "Simon MELLERIN",
+            "email" : "simon.mellerin@makina-corpus.com",
+            "role": "Developer"
+        },
+        {
+            "name" : "Makina Corpus",
+            "homepage" : "https://www.makina-corpus.com"
+        }
+    ],
+    "minimum-stability" : "dev",
+    "prefer-stable" : true,
+    "autoload" : {
+        "psr-4" : {
+            "MakinaCorpus\\Message\\" : "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MakinaCorpus\\Message\\Tests\\": "tests/"
+        }
+    },
+    "require" : {
+        "php" : ">=8.0"
+    },
+    "require-dev" : {
+        "ramsey/uuid": "^3.8 || ^4",
+        "symfony/uid": "^5.1 || ^6.0",
+        "phpunit/phpunit": "^9"
+    },
+    "suggest" : {
+        "ramsey/uuid": "For using ramsey/uuid as identifier implementation.",
+        "symfony/uid": "For using symfony/uid identifier implementation"
+    }
+}
