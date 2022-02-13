@@ -49,13 +49,8 @@ trait WithPropertiesTrait
      */
     public function withMessageId(MessageId $messageId): self /* static */
     {
-        if (null !== ($existing = $this->getProperty(Property::MESSAGE_ID))) {
-            if ($existing !== $messageId->toString()) {
-                throw new \InvalidArgumentException("Message identifier '%s' differs from properties values '%s'.", $messageId, $existing);
-            }
-        }
-
         $this->messageId = $messageId;
+        $this->properties[Property::MESSAGE_ID] = $messageId->toString();
 
         return $this;
     }
