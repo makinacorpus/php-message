@@ -44,13 +44,17 @@ final class Property extends PropertyAmqp1_0
     /** From AMQP 0.9 */
     const EXPIRATION = 'expiration';
 
+    /** Should not be a property, but hey. Both are the same thing, use either one. */
+    const QUEUE = 'x-routing-key';
+    const ROUTING_KEY = 'x-routing-key';
+
     /** Current number of retry count. */
     const RETRY_COUNT = 'x-retry-count';
     /** Retry after at least <VALUE> milliseconds. */
     const RETRY_DELAI = 'x-retry-delai';
     /** Maximum number of retries (AMQP would use a TTL instead). */
     const RETRY_MAX = 'x-retry-max';
-    /** Set this with any value to forbid retry. */
+    /** @deprecated Set this with any value to forbid retry. */
     const RETRY_KILLSWITCH = 'x-retry-killswitch';
     /** Why should it retry? */
     const RETRY_REASON = 'x-retry-reason';
