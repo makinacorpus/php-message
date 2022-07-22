@@ -21,10 +21,16 @@ class Envelope
     private mixed $message;
 
     /**
-     * Please use the Envelope::wrap() method instead.
+     * Please use the Envelope::wrap() method.
      */
-    private function __construct()
+    protected function __construct(mixed $message, array $properties = [])
     {
+        $this->message = $message;
+        $this->withProperties($properties);
+
+        if (!$this->hasProperty(Property::MESSAGE_ID)) {
+            $this->messageId = $this->properties[Property::MESSAGE_ID] = MessageIdFactory::generate();
+        }
     }
 
     /**
@@ -35,16 +41,9 @@ class Envelope
     public static function wrap(mixed $message, array $properties = []): Envelope /* @todo static */
     {
         if ($message instanceof static) {
-            $ret = $message->withProperties($properties);
-        } else {
-            $ret = new static();
-            $ret->message = $message;
-            $ret->withProperties($properties);
+            return $message->withProperties($properties);
         }
-        if (!$ret->hasProperty(Property::MESSAGE_ID)) {
-            return $ret->withMessageId(MessageIdFactory::generate());
-        }
-        return $ret;
+        return new static($message, $properties);
     }
 
     /**
