@@ -12,6 +12,9 @@ use MakinaCorpus\Message\Identifier\MessageIdFactory;
  * Helper for embedding properties into messages or enveloppes.
  *
  * @codeCoverageIgnore
+ *
+ * @deprecated
+ *   For non backward compatible legacy code.
  */
 trait WithPropertiesTrait
 {
